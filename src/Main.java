@@ -6,6 +6,11 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
+    /**
+     * Empieza el Stage que es el contenedor
+     * @param primaryStage
+     * @throws Exception
+     */
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
@@ -15,6 +20,10 @@ public class Main extends Application {
     }
 
 
+    /**
+     * Lanza el grafico
+     * @param args
+     */
     public static void main(String[] args) {
         launch(args);
     }

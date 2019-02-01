@@ -2,7 +2,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class FilaTest {
+class PilaTest {
 
     @Test
     void push() {
@@ -14,7 +14,7 @@ class FilaTest {
 
     @Test
     void peek() {
-        Fila <String> f = new Fila<String>();
+        Pila<String> f = new Pila<String>();
         Boolean esperado = true;
         assertEquals(esperado, f.empty());
     }

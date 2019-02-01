@@ -15,7 +15,7 @@
       <RowConstraints />
    </rowConstraints>
    <children>
-      <Pane prefHeight="316.0" prefWidth="320.0">
+      <Pane prefHeight="372.0" prefWidth="320.0">
          <children>
             <Button fx:id="load" layoutX="113.0" layoutY="85.0" mnemonicParsing="false" onAction="#loadActionListener" text="Cargar Archivo" />
             <Button fx:id="calculate" layoutX="134.0" layoutY="203.0" mnemonicParsing="false" onAction="#calculateActionListener" text="Operar" />

@@ -1,3 +1,7 @@
+/**
+ * Esta es la interfaz del Stack
+ * @param <E>
+ */
 public interface Stack<E> {
     public void push(E item);
     // pre:

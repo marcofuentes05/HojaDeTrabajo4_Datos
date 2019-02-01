@@ -1,5 +1,8 @@
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Es la clase de pruebas de JUnit
+ */
 class CalculatorImpTest {
 
     @org.junit.jupiter.api.Test
