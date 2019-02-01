@@ -3,16 +3,13 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.stream.Stream;
-
 public class Main {
     public static void main(String args[]) {
-        List<String> mapa =  new ArrayList<String>();
+        ArrayList<String> mapa =  new ArrayList<String>();
         CalculatorImp calculadora = new CalculatorImp();
         Fila <String> operadores = new Fila<>();
         Fila <Integer> operandos = new Fila<>();
-
         try{
             Stream<String> lines = Files.lines(Paths.get("datos.txt"), StandardCharsets.UTF_8);
             lines.forEach(s  -> mapa.add(s));
@@ -20,59 +17,67 @@ public class Main {
             System.out.println("Error!");
             e.printStackTrace();
         }
-
-        int size = mapa.size();
-
-        for (int i = 0;i <size;i++){
-
-            System.out.println(mapa.get(i) + " ");
-
-            if (mapa.get(i).equals("0")){
-                operandos.push(0);
-            }else if(mapa.get(i).equals("1")){
-                operandos.push(1);
-            }else if (mapa.get(i).equals("2")){
-                operandos.push(2);
-            }else if(mapa.get(i).equals("3")){
-                operandos.push(3);
-            }else if(mapa.get(i).equals("4")){
-                operandos.push(4);
-            }else if(mapa.get(i).equals("5")){
-                operandos.push(5);
-            }else if(mapa.get(i).equals("6")){
-                operandos.push(6);
-            }else if(mapa.get(i).equals("7")){
-                operandos.push(7);
-            }else if(mapa.get(i).equals("8")){
-                operandos.push(8);
-            }else if(mapa.get(i).equals("9")){
-                operandos.push(9);
-            }else if(mapa.get(i).equals("+")){
-                operadores.push("+");
-            }else if(mapa.get(i).equals("-")){
-                operadores.push("-");
-            }else if(mapa.get(i).equals("*")){
-                operadores.push("*");
-            }else if(mapa.get(i).equals("/")){
-                operadores.push("/");
-            }
-
-            if (operandos.size() == 2 && operadores.size()==1){
-                int num1 = operandos.pop();
-                int num2 = operandos.pop();
-                String op = operadores.pop();
-                if (op.equals("/") && num2 == 0){
-                    System.out.println("Error! Division por 0 no definida");
+        String [] m = mapa.get(0).split("");
+        int size = m.length;
+        for (int i = 0;i <size;i++) {
+            switch (m[i]) {
+                case "0":
+                    operandos.push(0);
                     break;
-                }else{
-                    try{
-                        int resultado = calculadora.calculate(num1,num2,op);
-                        operandos.push(resultado);
-                    }catch(Exception e){
-                        System.out.println("Esta calculadora no soporta los decimales!");
+                case "1":
+                    operandos.push(1);
+                    break;
+                case "2":
+                    operandos.push(2);
+                    break;
+                case "3":
+                    operandos.push(3);
+                    break;
+                case "4":
+                    operandos.push(4);
+                    break;
+                case "5":
+                    operandos.push(5);
+                    break;
+                case "6":
+                    operandos.push(6);
+                    break;
+                case "7":
+                    operandos.push(7);
+                    break;
+                case "8":
+                    operandos.push(8);
+                    break;
+                case "9":
+                    operandos.push(9);
+                    break;
+                case "+":
+                    operadores.push("+");
+                    break;
+                case "-":
+                    operadores.push("-");
+                    break;
+                case "*":
+                    operadores.push("*");
+                    break;
+                case "/":
+                    operadores.push("/");
+                    break;
+            }
+            if (operadores.size() == 1){
+                if (operandos.size() == 2) {
+                    if (operadores.peek().equals("/") && operandos.peek() == 0) {
+                        System.out.println("Error! Division por 0 no definida");
                         break;
+                    } else {
+                        try {
+                            operandos.push(calculadora.calculate(operandos.pop(), operandos.pop(), operadores.pop()));
+                            System.out.println(operandos.peek());
+                        } catch (Exception e) {
+                            System.out.println("Esta calculadora no soporta los decimales!");
+                            break;
+                        }
                     }
-
                 }
             }
         }
@@ -81,7 +86,5 @@ public class Main {
         }else{
             System.out.println("Algo salio mal...");
         }
-
-
     }
 }
