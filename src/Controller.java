@@ -63,8 +63,6 @@ public class Controller {
             for (int z = 0;z<mapa.size();z++){
                 a = a +mapa.get(z) + "\n";
             }
-            //file.setText(a);
-
         }catch(IOException e0){
             JOptionPane.showMessageDialog(null, "Algo salio mal con el archivo... revisalo y prueba de nuevo","Alerta",  JOptionPane.WARNING_MESSAGE);
             }
@@ -74,14 +72,11 @@ public class Controller {
      * Es el action listener que lanza la ventana donde se calcula y da el resultado final de toda la operacion
      */
     public void calculateActionListener(){
-        System.out.println(mapa.size());
         for(int z = 0;z<mapa.size();z++){
             m = mapa.get(z).split("");
             int size = m.length;
             String res = "";
-            System.out.println();
             for (int i = 0;i <size;i++) {
-                System.out.print(m[i] + "|");
                 switch (m[i]) {
                     case "0":
                         operandos.push(0);
@@ -135,11 +130,11 @@ public class Controller {
                         } else {
                             try {
                                 operandos.push(calculadora.calculate(operandos.pop(), operandos.pop(), operadores.pop()));
-
                             } catch (Exception e) {
                                 //Por si se encuentra alguna division que tiene un decimal
                                 JOptionPane.showMessageDialog(null, "Esta calculadora no soporta los decimales!","Alerta",  JOptionPane.WARNING_MESSAGE);
                                 break;
+
                             }
                         }
                     }
